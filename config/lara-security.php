@@ -4,6 +4,10 @@ use DualityStudio\LaraSecurity\{Directives, Headers};
 use Illuminate\Support\Facades\Vite;
 
 return [
+    'enabled' => env('LARA_SECURITY_ENABLED', true),
+
+    'uses_vite' => true,
+
     'headers' => [
         Headers::CONTENT_SECURITY_POLICY => [
             Directives::BASE => [

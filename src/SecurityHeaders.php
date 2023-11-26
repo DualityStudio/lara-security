@@ -12,10 +12,10 @@ class SecurityHeaders
     {
         $response = $next($request);
 
-//        dd(Headers::getHeaders());
-
-        Headers::getHeaders()
-            ->each(fn ($value, $header) => $response->header($header, $value));
+        if (config('lara-security.enabled')) {
+            Headers::getHeaders()
+                ->each(fn ($value, $header) => $response->header($header, $value));
+        }
 
         return $response;
     }

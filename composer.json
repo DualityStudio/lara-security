@@ -1,0 +1,44 @@
+{
+    "name": "duality-studio/lara-security",
+    "description": "A straight implementation of security headers for Laravel",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "headers",
+        "csp",
+        "DateTime"
+    ],
+    "authors": [
+        {
+            "name": "Thomas Palmer",
+            "email": "thomas@dualitystudio.co.uk",
+            "homepage": "https://dualitystudio.co.uk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.0",
+        "illuminate/http": "^8.0|^9.0|^10.0",
+        "illuminate/support": "^8.0|^9.0|^10.0",
+        "spatie/laravel-package-tools": "^1.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "DualityStudio\\LaraSecurity\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DualityStudio\\LaraSecurity\\LaraSecurityServiceProvider"
+            ]
+        }
+    }
+}
+
+
+

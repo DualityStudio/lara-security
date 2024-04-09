@@ -14,6 +14,12 @@ composer require duality-studio/lara-security
 php artisan vendor:publish --provider="DualityStudio\LaraSecurity\LaraSecurityServiceProvider"
 ```
 
+In your `app/Http/Kernel.php` add the following to the `$middleware` array or as you see fit.
+
+```php
+\DualityStudio\LaraSecurity\SecurityHeaders::class,
+``` 
+
 In your `config/lara-security.php` you can configure the headers you want to use, all are enabled by default. In the CSP header is broken into directives.
 
 ### Nonces

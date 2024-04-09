@@ -45,7 +45,8 @@ class Headers
                 // TODO... make this less shit
                 $values = collect(config('lara-security.headers.' . static::CONTENT_SECURITY_POLICY . '.' . $directive, []))
                     ->map(fn ($value) => match($value) {
-                        Directives::SOURCE_VITE_ASSET => asset('/'),
+                        Directives::SOURCE_ASSET_URL => asset('/'),
+                        Directives::SOURCE_VITE_URL => self::getViteUrl($directive),
                         default => $value,
                     });
 
@@ -65,5 +66,20 @@ class Headers
             })
             ->filter()
             ->implode('; ');
+    }
+
+    protected static function getViteUrl(string $directive): string
+    {
+        if (Vite::isRunningHot()) {
+            $path = rtrim(file_get_contents(Vite::hotFile()));
+
+            if ($directive === Directives::CONNECT) {
+                $path = str_replace(['http://', 'https://'], ['ws://', 'wss://'], $path);
+            }
+
+            return $path;
+        }
+
+        return app('url')->asset('');
     }
 }

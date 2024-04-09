@@ -7,7 +7,8 @@ use ReflectionClass;
 
 class Directives
 {
-    const SOURCE_VITE_ASSET = 'vite_asset';
+    const SOURCE_VITE_URL = 'vite_url';
+    const SOURCE_ASSET_URL = 'asset_url';
     const SOURCE_SELF = '\'self\'';
     const SOURCE_NONE = '\'none\'';
     const SOURCE_UNSAFE_INLINE = '\'unsafe-inline\'';

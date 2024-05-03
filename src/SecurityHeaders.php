@@ -13,7 +13,7 @@ class SecurityHeaders
     {
         $response = $next($request);
 
-        if ($response instanceof BinaryFileResponse) {
+        if (!is_callable([$response, 'header'])) {
             return $response;
         }
 
